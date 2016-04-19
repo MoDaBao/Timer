@@ -7,16 +7,126 @@
 //
 
 #import "TimerViewController.h"
+#import "TimerListItemModel.h"
+#import "TimerListItemDB.h"
 
-@interface TimerViewController ()
+@interface TimerViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) UITableView *tableView;// 表视图
+@property (nonatomic, strong) NSMutableArray *itemListArray;
 
 @end
 
 @implementation TimerViewController
 
+- (NSMutableArray *)itemListArray {
+    if (!_itemListArray) {
+        self.itemListArray = [NSMutableArray array];
+        TimerListItemDB *db = [[TimerListItemDB alloc] init];
+        NSArray *array = [db selectAllData];
+        for (TimerListItemModel *model in array) {
+            [_itemListArray addObject:model];
+        }
+    }
+    return _itemListArray;
+}
+
+//  创建表视图
+- (void)createTable {
+    _tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, kNavigationHeight, kScreenWidth, kScreenHeight - kNavigationHeight) style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    [_tableView registerNib:[UINib nibWithNibName:@"TimerListItemModelCell" bundle:nil] forCellReuseIdentifier:NSStringFromClass([TimerListItemModel class])];
+    
+    [self.view addSubview:_tableView];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"计时器";
+    UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
+    button.frame = CGRectMake(0, 0, 40, 20);
+    [button setTitle:@"更多" forState:UIControlStateNormal];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    button.titleLabel.font = [UIFont systemFontOfSize:13];
+    [button addTarget:self action:@selector(more) forControlEvents:UIControlEventTouchUpInside];
+    
+    UIBarButtonItem *item = [[UIBarButtonItem alloc] initWithCustomView:button];
+    self.navigationItem.rightBarButtonItem = item;
+    
+    [self createTable];
     // Do any additional setup after loading the view.
+}
+
+- (void)more {
+    NSLog(@"2333");
+    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"" message:@"" preferredStyle:UIAlertControllerStyleActionSheet];
+    UIAlertAction *newAction = [UIAlertAction actionWithTitle:@"新建" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *managerAction = [UIAlertAction actionWithTitle:@"管理" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *backupAction = [UIAlertAction actionWithTitle:@"备份" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *restoreAction = [UIAlertAction actionWithTitle:@"恢复" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+        [alertController dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [alertController addAction:newAction];
+    [alertController addAction:managerAction];
+    [alertController addAction:backupAction];
+    [alertController addAction:restoreAction];
+    [alertController addAction:cancelAction];
+    
+    [self presentViewController:alertController animated:YES completion:^{
+        
+    }];
+    
+}
+
+
+#pragma mark -----表视图代理方法-----
+
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.itemListArray.count;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    BaseModel *model = self.itemListArray[indexPath.row];
+    BaseTableViewCell *cell = [FactoryTableViewCell createTableViewCell:model andTableView:tableView andIndexPath:indexPath];
+    [cell setDataWithModel:model];
+    
+    return cell;
+}
+
+//  左滑进入编辑模式
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    // 表视图开始更新
+    [tableView beginUpdates];
+    // 删除单元格
+    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    // 删除数组中与该单元格绑定的数据
+    [self.itemListArray removeObjectAtIndex:indexPath.row];
+    // 表视图结束更新
+    [tableView endUpdates];
+}
+
+//  修改左滑出现的delete按钮的文本
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return @"删除";
 }
 
 - (void)didReceiveMemoryWarning {

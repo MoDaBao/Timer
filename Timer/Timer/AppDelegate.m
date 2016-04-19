@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "TimerViewController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    // Override point for customization after application launch.
+    self.window.backgroundColor = [UIColor whiteColor];
+    
+    TimerViewController *timerVC = [[TimerViewController alloc] init];
+    UINavigationController *naVC = [[UINavigationController alloc] initWithRootViewController:timerVC];
+    
+    self.window.rootViewController = naVC;
+    
+    
+    [self.window makeKeyAndVisible];
+
+    
+    
     return YES;
 }
 

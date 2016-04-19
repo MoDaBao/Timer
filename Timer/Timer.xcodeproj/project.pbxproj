@@ -7,9 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E705F3581CC5F6E600181248 /* FactoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E705F3571CC5F6E600181248 /* FactoryTableViewCell.m */; };
+		E72C6DDA1CC5DDDA00BAEB55 /* TimerListItemDB.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C6DD91CC5DDDA00BAEB55 /* TimerListItemDB.m */; };
 		E74BE6F01CC525B1003E9B5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE6EF1CC525B1003E9B5D /* main.m */; };
 		E74BE6F31CC525B1003E9B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE6F21CC525B1003E9B5D /* AppDelegate.m */; };
-		E74BE6F61CC525B1003E9B5D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE6F51CC525B1003E9B5D /* ViewController.m */; };
 		E74BE6F91CC525B1003E9B5D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74BE6F71CC525B1003E9B5D /* Main.storyboard */; };
 		E74BE6FB1CC525B1003E9B5D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E74BE6FA1CC525B1003E9B5D /* Assets.xcassets */; };
 		E74BE6FE1CC525B1003E9B5D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E74BE6FC1CC525B1003E9B5D /* LaunchScreen.storyboard */; };
@@ -18,6 +19,12 @@
 		E74BE7261CC528D7003E9B5D /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE7251CC528D7003E9B5D /* BaseViewController.m */; };
 		E74BE7291CC528F1003E9B5D /* TimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE7281CC528F1003E9B5D /* TimerViewController.m */; };
 		E74BE72C1CC52B09003E9B5D /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE72B1CC52B09003E9B5D /* BaseModel.m */; };
+		E74BE72F1CC52D4A003E9B5D /* TimerListItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE72E1CC52D4A003E9B5D /* TimerListItemModel.m */; };
+		E74BE7321CC5310D003E9B5D /* TimerDetailItemModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE7311CC5310D003E9B5D /* TimerDetailItemModel.m */; };
+		E74BE7361CC54DAD003E9B5D /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE7341CC54DAD003E9B5D /* BaseTableViewCell.m */; };
+		E74BE73A1CC54DE4003E9B5D /* TimerListItemModelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE7391CC54DE4003E9B5D /* TimerListItemModelCell.m */; };
+		E74BE73C1CC54DF7003E9B5D /* TimerListItemModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74BE73B1CC54DF7003E9B5D /* TimerListItemModelCell.xib */; };
+		E74BE7401CC553AA003E9B5D /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE73F1CC553AA003E9B5D /* FMDBManager.m */; };
 		F478FDF0D28F018F70756234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB1B7AB21438A059B572267 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -42,12 +49,16 @@
 		3FC53002D310E77566DCE02C /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		85E81A8F765FBD9EBA5ECDF4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		CAB1B7AB21438A059B572267 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E705F3561CC5F6E600181248 /* FactoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTableViewCell.h; sourceTree = "<group>"; };
+		E705F3571CC5F6E600181248 /* FactoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTableViewCell.m; sourceTree = "<group>"; };
+		E72C6D971CC5BA9B00BAEB55 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E72C6D981CC5BFCB00BAEB55 /* ConstantHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantHeader.h; sourceTree = "<group>"; };
+		E72C6DD81CC5DDDA00BAEB55 /* TimerListItemDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListItemDB.h; sourceTree = "<group>"; };
+		E72C6DD91CC5DDDA00BAEB55 /* TimerListItemDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerListItemDB.m; sourceTree = "<group>"; };
 		E74BE6EB1CC525B1003E9B5D /* Timer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Timer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E74BE6EF1CC525B1003E9B5D /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E74BE6F11CC525B1003E9B5D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E74BE6F21CC525B1003E9B5D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E74BE6F41CC525B1003E9B5D /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		E74BE6F51CC525B1003E9B5D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		E74BE6F81CC525B1003E9B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		E74BE6FA1CC525B1003E9B5D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		E74BE6FD1CC525B1003E9B5D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -64,6 +75,17 @@
 		E74BE7281CC528F1003E9B5D /* TimerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerViewController.m; sourceTree = "<group>"; };
 		E74BE72A1CC52B09003E9B5D /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		E74BE72B1CC52B09003E9B5D /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		E74BE72D1CC52D4A003E9B5D /* TimerListItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListItemModel.h; sourceTree = "<group>"; };
+		E74BE72E1CC52D4A003E9B5D /* TimerListItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerListItemModel.m; sourceTree = "<group>"; };
+		E74BE7301CC5310D003E9B5D /* TimerDetailItemModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailItemModel.h; sourceTree = "<group>"; };
+		E74BE7311CC5310D003E9B5D /* TimerDetailItemModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailItemModel.m; sourceTree = "<group>"; };
+		E74BE7331CC54DAD003E9B5D /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		E74BE7341CC54DAD003E9B5D /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		E74BE7381CC54DE4003E9B5D /* TimerListItemModelCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListItemModelCell.h; sourceTree = "<group>"; };
+		E74BE7391CC54DE4003E9B5D /* TimerListItemModelCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerListItemModelCell.m; sourceTree = "<group>"; };
+		E74BE73B1CC54DF7003E9B5D /* TimerListItemModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerListItemModelCell.xib; sourceTree = "<group>"; };
+		E74BE73E1CC553AA003E9B5D /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
+		E74BE73F1CC553AA003E9B5D /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,15 +158,18 @@
 			children = (
 				E74BE6F11CC525B1003E9B5D /* AppDelegate.h */,
 				E74BE6F21CC525B1003E9B5D /* AppDelegate.m */,
-				E74BE6F41CC525B1003E9B5D /* ViewController.h */,
-				E74BE6F51CC525B1003E9B5D /* ViewController.m */,
 				E74BE7241CC528D7003E9B5D /* BaseViewController.h */,
 				E74BE7251CC528D7003E9B5D /* BaseViewController.m */,
 				E74BE72A1CC52B09003E9B5D /* BaseModel.h */,
 				E74BE72B1CC52B09003E9B5D /* BaseModel.m */,
+				E74BE7331CC54DAD003E9B5D /* BaseTableViewCell.h */,
+				E74BE7341CC54DAD003E9B5D /* BaseTableViewCell.m */,
+				E705F3561CC5F6E600181248 /* FactoryTableViewCell.h */,
+				E705F3571CC5F6E600181248 /* FactoryTableViewCell.m */,
 				E74BE7211CC52874003E9B5D /* Controller */,
 				E74BE7221CC52874003E9B5D /* Model */,
 				E74BE7231CC52874003E9B5D /* View */,
+				E74BE73D1CC55387003E9B5D /* Tools */,
 				E74BE6F71CC525B1003E9B5D /* Main.storyboard */,
 				E74BE6FA1CC525B1003E9B5D /* Assets.xcassets */,
 				E74BE6FC1CC525B1003E9B5D /* LaunchScreen.storyboard */,
@@ -193,6 +218,12 @@
 		E74BE7221CC52874003E9B5D /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E74BE72D1CC52D4A003E9B5D /* TimerListItemModel.h */,
+				E74BE72E1CC52D4A003E9B5D /* TimerListItemModel.m */,
+				E74BE7301CC5310D003E9B5D /* TimerDetailItemModel.h */,
+				E74BE7311CC5310D003E9B5D /* TimerDetailItemModel.m */,
+				E72C6DD81CC5DDDA00BAEB55 /* TimerListItemDB.h */,
+				E72C6DD91CC5DDDA00BAEB55 /* TimerListItemDB.m */,
 			);
 			name = Model;
 			path = Base.lproj/Model;
@@ -201,9 +232,24 @@
 		E74BE7231CC52874003E9B5D /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E74BE7381CC54DE4003E9B5D /* TimerListItemModelCell.h */,
+				E74BE7391CC54DE4003E9B5D /* TimerListItemModelCell.m */,
+				E74BE73B1CC54DF7003E9B5D /* TimerListItemModelCell.xib */,
 			);
 			name = View;
 			path = Base.lproj/View;
+			sourceTree = "<group>";
+		};
+		E74BE73D1CC55387003E9B5D /* Tools */ = {
+			isa = PBXGroup;
+			children = (
+				E74BE73E1CC553AA003E9B5D /* FMDBManager.h */,
+				E74BE73F1CC553AA003E9B5D /* FMDBManager.m */,
+				E72C6D971CC5BA9B00BAEB55 /* PrefixHeader.pch */,
+				E72C6D981CC5BFCB00BAEB55 /* ConstantHeader.h */,
+			);
+			name = Tools;
+			path = Base.lproj/Tools;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -315,6 +361,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E74BE73C1CC54DF7003E9B5D /* TimerListItemModelCell.xib in Resources */,
 				E74BE6FE1CC525B1003E9B5D /* LaunchScreen.storyboard in Resources */,
 				E74BE6FB1CC525B1003E9B5D /* Assets.xcassets in Resources */,
 				E74BE6F91CC525B1003E9B5D /* Main.storyboard in Resources */,
@@ -390,10 +437,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E705F3581CC5F6E600181248 /* FactoryTableViewCell.m in Sources */,
+				E74BE73A1CC54DE4003E9B5D /* TimerListItemModelCell.m in Sources */,
+				E74BE7361CC54DAD003E9B5D /* BaseTableViewCell.m in Sources */,
 				E74BE72C1CC52B09003E9B5D /* BaseModel.m in Sources */,
-				E74BE6F61CC525B1003E9B5D /* ViewController.m in Sources */,
 				E74BE7261CC528D7003E9B5D /* BaseViewController.m in Sources */,
+				E74BE72F1CC52D4A003E9B5D /* TimerListItemModel.m in Sources */,
+				E72C6DDA1CC5DDDA00BAEB55 /* TimerListItemDB.m in Sources */,
 				E74BE7291CC528F1003E9B5D /* TimerViewController.m in Sources */,
+				E74BE7321CC5310D003E9B5D /* TimerDetailItemModel.m in Sources */,
+				E74BE7401CC553AA003E9B5D /* FMDBManager.m in Sources */,
 				E74BE6F31CC525B1003E9B5D /* AppDelegate.m in Sources */,
 				E74BE6F01CC525B1003E9B5D /* main.m in Sources */,
 			);
@@ -537,6 +590,7 @@
 			baseConfigurationReference = 3FC53002D310E77566DCE02C /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Timer/Base.lproj/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = Timer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lanou.Timer;
@@ -549,6 +603,7 @@
 			baseConfigurationReference = 85E81A8F765FBD9EBA5ECDF4 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PREFIX_HEADER = Timer/Base.lproj/Tools/PrefixHeader.pch;
 				INFOPLIST_FILE = Timer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lanou.Timer;

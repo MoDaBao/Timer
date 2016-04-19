@@ -1,15 +1,15 @@
 //
-//  ViewController.h
+//  TimerDetailItemModel.m
 //  Timer
 //
 //  Created by 莫大宝 on 16/4/18.
 //  Copyright © 2016年 dabao. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "TimerDetailItemModel.h"
 
-@interface ViewController : UIViewController
+@implementation TimerDetailItemModel
+
 
 
 @end
-

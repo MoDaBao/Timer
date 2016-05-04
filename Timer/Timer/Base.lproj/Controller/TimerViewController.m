@@ -132,21 +132,33 @@
 
 //  左滑进入编辑模式
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-    // 表视图开始更新
-    [tableView beginUpdates];
-    // 删除单元格
-    [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    // 删除数据库数据
-    TimerListItemModel *model = self.itemListArray[indexPath.row];
-    TimerListItemDB *db = [[TimerListItemDB alloc] init];
-    [db deleteWithTitle:model.title];
-    TimerDetailItemDB *detailItemDB = [[TimerDetailItemDB alloc] init];
-    [detailItemDB deleteWithTitle:model.title];
-    // 删除数组中与该单元格绑定的数据,此步骤应该在最后一步做
-    [self.itemListArray removeObjectAtIndex:indexPath.row];
     
-    // 表视图结束更新
-    [tableView endUpdates];
+    UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"" message:@"确认删除?" preferredStyle:UIAlertControllerStyleAlert];
+    UIAlertAction *cancelAction = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        
+    }];
+    UIAlertAction *confirmAction = [UIAlertAction actionWithTitle:@"确认" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        // 表视图开始更新
+        [tableView beginUpdates];
+        // 删除单元格
+        [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+        // 删除数据库数据
+        TimerListItemModel *model = self.itemListArray[indexPath.row];
+        TimerListItemDB *db = [[TimerListItemDB alloc] init];
+        [db deleteWithTitle:model.title];
+        TimerDetailItemDB *detailItemDB = [[TimerDetailItemDB alloc] init];
+        [detailItemDB deleteWithTitle:model.title];
+        // 删除数组中与该单元格绑定的数据,此步骤应该在最后一步做
+        [self.itemListArray removeObjectAtIndex:indexPath.row];
+        // 表视图结束更新
+        [tableView endUpdates];
+    }];
+    
+    [alert addAction:cancelAction];
+    [alert addAction:confirmAction];
+//    uipicker
+    [self presentViewController:alert animated:YES completion:nil];
+    
 }
 
 //  修改左滑出现的delete按钮的文本

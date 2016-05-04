@@ -59,6 +59,7 @@
     NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where title = '%@'",TIMERDETAILITEMTABLE, title];
     if ([_dataBase executeUpdate:deleteSql]) {
         NSLog(@"删除成功");
+        
     } else {
         NSLog(@"删除失败");
     }

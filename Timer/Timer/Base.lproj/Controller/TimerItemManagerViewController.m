@@ -10,6 +10,9 @@
 #import "TimerDetailItemOtherCell.h"
 #import "TimerDetailItemStepCell.h"
 #import "AlterTitleViewController.h"
+#import "CustomPickerView.h"
+#import "MOCustomDatePickerView.h"
+#import "StepDetailViewController.h"
 @interface TimerItemManagerViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -122,11 +125,13 @@
     if (_isNew) {
         imageView.image = [UIImage imageNamed:self.orginModel.titleicon];
         label.text = self.orginModel.title;
-        [self assignmentWithImageView:imageView color:self.orginModel.titlecolor];
+//        [self assignmentWithImageView:imageView color:self.orginModel.titlecolor];
+        [ChangeColorManager changColorWithImageView:imageView color:self.orginModel.titlecolor];
     } else {
         imageView.image = [UIImage imageNamed:self.selectModel.titleicon];
         label.text = self.selectModel.title;
-        [self assignmentWithImageView:imageView color:self.selectModel.titlecolor];
+//        [self assignmentWithImageView:imageView color:self.selectModel.titlecolor];
+        [ChangeColorManager changColorWithImageView:imageView color:self.selectModel.titlecolor];
     }
     label.width = [UILabel getWidthWithTitle:label.text font:label.font];
     view.width = label.width + imageView.width;
@@ -153,6 +158,8 @@
          if (self.oldModel) {
              [db updateWithTitle:self.oldModel.title model:self.selectModel];
 //             NSLog(@"更新");
+         } else {
+             [db updateWithTitle:self.selectModel.title model:self.selectModel];
          }
          
      }
@@ -174,7 +181,6 @@
     return 60;
 }
 
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *reuseIdentifier = @"reuse";
     if (indexPath.row > 1 && indexPath.row < self.itemArray.count + 2) {// 步骤
@@ -183,13 +189,32 @@
             cell = [[[NSBundle mainBundle] loadNibNamed:@"TimerDetailItemStepCell" owner:nil options:nil] lastObject];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
             cell.icon.layer.cornerRadius = 10;
+            [cell.contentView removeFromSuperview];
             
         }
         NSString *string = self.itemArray[indexPath.row - 2];// 获取步骤字符串
         NSArray *array = [string componentsSeparatedByString:@"&"];// 通过&符号分割字符串
-        [self assignmentWithImageView:cell.icon color:[array firstObject]];// 设置步骤颜色
+//        [self assignmentWithImageView:cell.icon color:[array firstObject]];// 设置步骤颜色
+        [ChangeColorManager changColorWithImageView:cell.icon color:[array firstObject]];// 设置步骤颜色
         cell.stepName.text = array[1];// 设置步骤名称
         cell.time.text = [array lastObject];
+        cell.click = ^ {
+            StepDetailViewController *stepVC = [[StepDetailViewController alloc] init];
+            stepVC.backBlock = ^ (NSString *step) {
+                self.itemArray[indexPath.row - 2] = step;
+                if (_isNew) {
+                    self.orginModel.step = step;
+                    self.itemArray[indexPath.row] = step;
+                    [self.tableView reloadData];
+                } else {
+                    self.selectModel.step = step;
+                    [self.tableView reloadData];
+                }
+            };
+            stepVC.step = string;
+            [self.navigationController pushViewController:stepVC animated:YES];
+            
+        };
         return cell;
         
     } else {// 标题、倒计时、几轮
@@ -212,18 +237,18 @@
 }
 
 // 给颜色赋值
-- (void)assignmentWithImageView:(UIImageView *)imageView color:(NSString *)color {
-    if ([color isEqualToString:@"kPink"]) {
-        imageView.backgroundColor = kPink;
-    } else if ([color isEqualToString:@"kGray"]) {
-        imageView.backgroundColor = kGray;
-    } else if ([color isEqualToString:@"kGreen"]) {
-        imageView.backgroundColor = kGreen;
-    } else if ([color isEqualToString:@"kBlue"]) {
-        imageView.backgroundColor = kBlue;
-    }
-
-}
+//- (void)assignmentWithImageView:(UIImageView *)imageView color:(NSString *)color {
+//    if ([color isEqualToString:@"kPink"]) {
+//        imageView.backgroundColor = kPink;
+//    } else if ([color isEqualToString:@"kGray"]) {
+//        imageView.backgroundColor = kGray;
+//    } else if ([color isEqualToString:@"kGreen"]) {
+//        imageView.backgroundColor = kGreen;
+//    } else if ([color isEqualToString:@"kBlue"]) {
+//        imageView.backgroundColor = kBlue;
+//    }
+//
+//}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row > 1 && indexPath.row < self.itemArray.count + 2) {
@@ -239,6 +264,9 @@
     [tableView beginUpdates];
     // 删除单元格
     [self.tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
+    
+    // 删除数组中与该单元格绑定的数据,此步骤应该在最后一步做
+    [self.itemArray removeObjectAtIndex:indexPath.row - 2];
     NSString *string = [self.itemArray componentsJoinedByString:@"/"];
     // 修改模型的值
     if (_isNew) {
@@ -246,8 +274,7 @@
     } else {
         self.selectModel.step = string;
     }
-    // 删除数组中与该单元格绑定的数据,此步骤应该在最后一步做
-    [self.itemArray removeObjectAtIndex:indexPath.row - 2];
+    
     // 表视图结束更新
     [tableView endUpdates];
 }
@@ -279,6 +306,35 @@
         }
         [self.navigationController pushViewController:alterTitleVC animated:YES];
         
+    } else if (indexPath.row == self.itemArray.count + 2) {
+        NSMutableArray *mArr = [NSMutableArray array];
+        for (int i = 1; i < 100; i ++) {
+            [mArr addObject:[NSString stringWithFormat:@"%d",i]];
+        }
+        CustomPickerView *customView = [CustomPickerView cretaCustomPickerViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) title:@"" dataArray:mArr];
+        customView.click = ^(NSString *item) {
+            NSLog(@"%@",item);
+            if (_isNew) {
+                self.orginModel.loopcount = [NSNumber numberWithInt:[item intValue]];
+                [self.tableView reloadData];
+            } else {
+                self.selectModel.loopcount = [NSNumber numberWithInt:[item intValue]];
+                [self.tableView reloadData];
+            }
+        };
+        [self.view addSubview:customView];
+    } else if (indexPath.row == 1) {
+        MOCustomDatePickerView *customView = [MOCustomDatePickerView cretaCustomPickerViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) title:nil dataArray:nil];
+        customView.click = ^ (NSString *item) {
+            if (_isNew) {
+                self.orginModel.countdown = [NSNumber numberWithInt:[item intValue]];
+                [self.tableView reloadData];
+            } else {
+                self.selectModel.countdown = [NSNumber numberWithInt:[item intValue]];
+                [self.tableView reloadData];
+            }
+        };
+        [self.view addSubview:customView];
     }
 }
 

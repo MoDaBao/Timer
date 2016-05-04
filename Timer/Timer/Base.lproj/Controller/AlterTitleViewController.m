@@ -9,15 +9,50 @@
 #import "AlterTitleViewController.h"
 
 
-@interface AlterTitleViewController ()
+@interface AlterTitleViewController ()<UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, strong) UIImageView  *iconImageView;
 @property (nonatomic, strong) UITextField *textField;
-//@property (nonatomic, strong) pick *<#name#>;
+@property (nonatomic, strong) UIPickerView *imagePickerView;
+@property (nonatomic, strong) NSMutableArray *iconArray;
+@property (nonatomic, strong) NSMutableArray *colorArray;
+@property (nonatomic, strong) NSMutableArray *dataArray;
 
 @end
 
 @implementation AlterTitleViewController
+
+- (NSMutableArray *)iconArray {
+    if (!_iconArray) {
+//        _iconArray = @{@"跑步":@"runGray", @"上下蹲":@"squatGray", @"体操":@"gymGray"};
+        self.iconArray = [NSMutableArray array];
+        [_iconArray addObject:@{@"跑步":@"runGray"}];
+        [_iconArray addObject:@{@"上下蹲":@"squatGray"}];
+        [_iconArray addObject:@{@"体操":@"gymGray"}];
+    }
+    return _iconArray;
+}
+
+- (NSMutableArray *)colorArray {
+    if (!_colorArray) {
+//        _colorArray = @{@"粉色":@"kPink", @"灰色":@"kGray", @"绿色":@"kGreen", @"蓝色":@"kBlue"};
+        self.colorArray = [NSMutableArray array];
+        [_colorArray addObject:@{@"粉色":@"kPink"}];
+        [_colorArray addObject:@{@"灰色":@"kGray"}];
+        [_colorArray addObject:@{@"绿色":@"kGreen"}];
+        [_colorArray addObject:@{@"蓝色":@"kBlue"}];
+    }
+    return _colorArray;
+}
+
+- (NSMutableArray *)dataArray {
+    if (!_dataArray) {
+        self.dataArray = [NSMutableArray array];
+        [_dataArray addObject:self.iconArray];
+        [_dataArray addObject:self.colorArray];
+    }
+    return _dataArray;
+}
 
 // 创建视图
 - (void)createView {
@@ -30,7 +65,7 @@
     self.iconImageView.x = margin;
     self.iconImageView.image = [UIImage imageNamed:self.detailItemModel.titleicon];
     self.iconImageView.layer.cornerRadius = self.iconImageView.width * 0.25;
-    [self assignmentWithImageView:self.iconImageView color:self.detailItemModel.titlecolor];// 设置背景色
+    [ChangeColorManager changColorWithImageView:self.iconImageView color:self.detailItemModel.titlecolor];// 设置背景色
     [headView addSubview:self.iconImageView];
     
     CGFloat textFieldHeight = self.iconImageView.height;
@@ -55,12 +90,19 @@
     label.y = headView.y + headViewHeight + marginTop;
     label.height = [UILabel getHeightByWidth:label.width title:label.text font:label.font];
     [self.view addSubview:label];
+    
+    self.imagePickerView = [[UIPickerView alloc] initWithFrame:CGRectMake(0, label.y + label.height, kScreenWidth, 200)];
+    self.imagePickerView.delegate = self;
+    self.imagePickerView.dataSource = self;
+    self.imagePickerView.backgroundColor = [UIColor whiteColor];
+    
+    [self.view addSubview:self.imagePickerView];
 }
 
-// 创建选择视图
-- (void)createPickerView {
-    
-}
+//// 创建选择视图
+//- (void)createPickerView {
+////    self.imagePickerView = [UIPickerView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+//}
 
 // 创建按钮
 - (void)createBtn {
@@ -86,21 +128,72 @@
     self.navigationItem.title = @"修改计时器";
     
     [self createView];// 创建视图
-    [self createPickerView];// 创建选择视图
+//    [self createPickerView];// 创建选择视图
     [self createBtn];// 创建按钮
 }
 
 // 给颜色赋值
-- (void)assignmentWithImageView:(UIImageView *)imageView color:(NSString *)color {
-    if ([color isEqualToString:@"kPink"]) {
-        imageView.backgroundColor = kPink;
-    } else if ([color isEqualToString:@"kGray"]) {
-        imageView.backgroundColor = kGray;
-    } else if ([color isEqualToString:@"kGreen"]) {
-        imageView.backgroundColor = kGreen;
-    } else if ([color isEqualToString:@"kBlue"]) {
-        imageView.backgroundColor = kBlue;
+//- (void)assignmentWithImageView:(UIImageView *)imageView color:(NSString *)color {
+//    if ([color isEqualToString:@"kPink"]) {
+//        imageView.backgroundColor = kPink;
+//    } else if ([color isEqualToString:@"kGray"]) {
+//        imageView.backgroundColor = kGray;
+//    } else if ([color isEqualToString:@"kGreen"]) {
+//        imageView.backgroundColor = kGreen;
+//    } else if ([color isEqualToString:@"kBlue"]) {
+//        imageView.backgroundColor = kBlue;
+//    }
+//    
+//}
+
+
+#pragma mark -----pickerView代理方法-----
+
+- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView {
+    NSInteger count = self.dataArray.count;
+    return count;
+}
+
+- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component {
+    NSInteger count = [self.dataArray[component] count];
+    return count;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component {
+    return 100;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return 30;
+}
+
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UIView *returnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.5, 20)];
+    CGFloat width = 25;
+    CGFloat height = width;
+    CGFloat margin = 10;
+    CGFloat totalwidth = [UILabel getWidthWithTitle:@"跑步" font:[UIFont systemFontOfSize:14]] + margin + width;
+    CGFloat imageX = kScreenWidth * 0.5 - totalwidth * 0.5;
+    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, returnView.height * 0.5 - height * 0.5, width, height)];
+    imageView.layer.cornerRadius = width * 0.25;
+    // 取出数据源
+    NSDictionary *dic = self.dataArray[component][row];
+    if (component == 0) {
+        imageView.image = [UIImage imageNamed:dic.allValues[0]];
+    } else {
+//        [self assignmentWithImageView:imageView color:dic.allValues[0]];
+        [ChangeColorManager changColorWithImageView:imageView color:dic.allValues[0]];
     }
+    [returnView addSubview:imageView];
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(imageX + margin + width, 0, 50, returnView.height)];
+    label.font = [UIFont systemFontOfSize:14];
+    label.textAlignment = NSTextAlignmentLeft;
+    label.text = dic.allKeys[0];
+    [returnView addSubview:label];
+    
+    
+    return returnView;
     
 }
 
@@ -108,6 +201,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 /*
 #pragma mark - Navigation

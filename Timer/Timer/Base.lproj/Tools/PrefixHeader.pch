@@ -26,5 +26,9 @@
 
 #import "UIView+ChangeFrame.h"
 
+#import "UILabel+LabelHeightAndWidth.h"
+
+#import "ChangeColorManager.h"
+
 
 #endif /* PrefixHeader_pch */

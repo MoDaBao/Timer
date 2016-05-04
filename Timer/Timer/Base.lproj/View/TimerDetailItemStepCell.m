@@ -19,7 +19,8 @@
 }
 */
 - (IBAction)alter:(id)sender {
-    
+    self.click();
+    NSLog(@"点击了按钮");
 }
 
 //- (void)setDataWithModel:(TimerDetailItemModel *)model {

@@ -74,7 +74,7 @@
 
 //  更新数据
 - (void)updateWithTitle:(NSString *)title model:(TimerListItemModel *)model {
-    NSString *updateSql = [NSString stringWithFormat:@"update %@ set icon = ?, iconBGColor = ?, title = ?, desc = ?",TIMERLISTITEMTABLE];
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set icon = ?, iconBGColor = ?, title = ?, desc = ? where title = '%@'",TIMERLISTITEMTABLE, title];
     if ([_dataBase executeUpdate:updateSql,model.icon, model.iconBGColor, model.title, model.desc]) {
         NSLog(@"更新数据成功");
     } else {

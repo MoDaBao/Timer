@@ -22,6 +22,9 @@
 //  删除数据
 - (void)deleteWithTitle:(NSString *)title;
 
+//  更新数据
+- (void)updateWithTitle:(NSString *)title model:(TimerListItemModel *)model;
+
 // 查询所有数据
 - (NSArray *)selectAllData;
 

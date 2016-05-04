@@ -15,7 +15,8 @@
 #define kBlue [UIColor colorWithRed:28 / 255.0 green:157 / 255.0 blue:214 / 255.0 alpha:1.0]
 
 #define DATABASENAME @"Timer.sqlite"// 数据库名
-#define TIMERLISTITEMTABLE @"timeritemtable"// 表名
+#define TIMERLISTITEMTABLE @"timeritemtable"// 计时器列表表名
+#define TIMERDETAILITEMTABLE @"timerdetailitemtable"// 详细条目表明
 
 #define kScreenWidth [UIScreen mainScreen].bounds.size.width
 #define kScreenHeight [UIScreen mainScreen].bounds.size.height

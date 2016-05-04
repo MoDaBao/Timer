@@ -28,8 +28,8 @@
         NSLog(@"数据表已存在");
     } else {
         // 创建数据表
-        NSString *createSql = [NSString stringWithFormat:@"create table %@ (icon text, iconBGColor text, title text, desc text)",TIMERLISTITEMTABLE];
-        if (![_dataBase executeUpdate:createSql]) {
+        NSString *createSql = [NSString stringWithFormat:@"create table %@ (title text primary key, icon text, iconBGColor text, desc text)",TIMERLISTITEMTABLE];
+        if ([_dataBase executeUpdate:createSql]) {
             NSLog(@"数据表创建成功");
         } else {
             NSLog(@"数据表创建失败");
@@ -65,7 +65,21 @@
 //  删除数据
 - (void)deleteWithTitle:(NSString *)title {
     NSString *deleteSql = [NSString stringWithFormat:@"delete from %@ where title = '%@'",TIMERLISTITEMTABLE, title];
-    [_dataBase executeUpdate:deleteSql];
+    if ([_dataBase executeUpdate:deleteSql]) {
+        NSLog(@"删除数据成功");
+    } else {
+        NSLog(@"数据删除失败");
+    }
+}
+
+//  更新数据
+- (void)updateWithTitle:(NSString *)title model:(TimerListItemModel *)model {
+    NSString *updateSql = [NSString stringWithFormat:@"update %@ set icon = ?, iconBGColor = ?, title = ?, desc = ?",TIMERLISTITEMTABLE];
+    if ([_dataBase executeUpdate:updateSql,model.icon, model.iconBGColor, model.title, model.desc]) {
+        NSLog(@"更新数据成功");
+    } else {
+        NSLog(@"更新数据失败");
+    }
 }
 
 // 查询所有数据

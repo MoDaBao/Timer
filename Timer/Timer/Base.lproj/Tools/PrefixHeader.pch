@@ -22,5 +22,9 @@
 
 #import "FactoryTableViewCell.h"
 
+#import "UILabel+LabelHeightAndWidth.h"
+
+#import "UIView+ChangeFrame.h"
+
 
 #endif /* PrefixHeader_pch */

@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		E705F3581CC5F6E600181248 /* FactoryTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E705F3571CC5F6E600181248 /* FactoryTableViewCell.m */; };
+		E71D3B201CD5EE9B00196E4E /* boli.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = E71D3B1F1CD5EE9B00196E4E /* boli.mp3 */; };
+		E71D3B231CD5F1B200196E4E /* TimerDetailItemDB.m in Sources */ = {isa = PBXBuildFile; fileRef = E71D3B221CD5F1B200196E4E /* TimerDetailItemDB.m */; };
 		E72C6DDA1CC5DDDA00BAEB55 /* TimerListItemDB.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C6DD91CC5DDDA00BAEB55 /* TimerListItemDB.m */; };
 		E74BE6F01CC525B1003E9B5D /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE6EF1CC525B1003E9B5D /* main.m */; };
 		E74BE6F31CC525B1003E9B5D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE6F21CC525B1003E9B5D /* AppDelegate.m */; };
@@ -25,6 +27,14 @@
 		E74BE73A1CC54DE4003E9B5D /* TimerListItemModelCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE7391CC54DE4003E9B5D /* TimerListItemModelCell.m */; };
 		E74BE73C1CC54DF7003E9B5D /* TimerListItemModelCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E74BE73B1CC54DF7003E9B5D /* TimerListItemModelCell.xib */; };
 		E74BE7401CC553AA003E9B5D /* FMDBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E74BE73F1CC553AA003E9B5D /* FMDBManager.m */; };
+		E75DD1681CD8590200483C5C /* TimerDetailItemOtherCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1671CD8590200483C5C /* TimerDetailItemOtherCell.m */; };
+		E75DD16A1CD8590B00483C5C /* TimerDetailItemOtherCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75DD1691CD8590B00483C5C /* TimerDetailItemOtherCell.xib */; };
+		E75DD16D1CD8799A00483C5C /* TimerDetailItemStepCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD16C1CD8799A00483C5C /* TimerDetailItemStepCell.m */; };
+		E75DD16F1CD879AB00483C5C /* TimerDetailItemStepCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E75DD16E1CD879AB00483C5C /* TimerDetailItemStepCell.xib */; };
+		E75DD1721CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1711CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m */; };
+		E75DD1751CD8D5B500483C5C /* UIView+ChangeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1741CD8D5B500483C5C /* UIView+ChangeFrame.m */; };
+		E75DD1781CD8DB5A00483C5C /* AlterTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1771CD8DB5A00483C5C /* AlterTitleViewController.m */; };
+		E7F13AF81CCE419000B0312D /* TimerItemManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F13AF71CCE419000B0312D /* TimerItemManagerViewController.m */; };
 		F478FDF0D28F018F70756234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB1B7AB21438A059B572267 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -51,6 +61,9 @@
 		CAB1B7AB21438A059B572267 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		E705F3561CC5F6E600181248 /* FactoryTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FactoryTableViewCell.h; sourceTree = "<group>"; };
 		E705F3571CC5F6E600181248 /* FactoryTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FactoryTableViewCell.m; sourceTree = "<group>"; };
+		E71D3B1F1CD5EE9B00196E4E /* boli.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = boli.mp3; sourceTree = "<group>"; };
+		E71D3B211CD5F1B200196E4E /* TimerDetailItemDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailItemDB.h; sourceTree = "<group>"; };
+		E71D3B221CD5F1B200196E4E /* TimerDetailItemDB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailItemDB.m; sourceTree = "<group>"; };
 		E72C6D971CC5BA9B00BAEB55 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E72C6D981CC5BFCB00BAEB55 /* ConstantHeader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConstantHeader.h; sourceTree = "<group>"; };
 		E72C6DD81CC5DDDA00BAEB55 /* TimerListItemDB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerListItemDB.h; sourceTree = "<group>"; };
@@ -86,6 +99,20 @@
 		E74BE73B1CC54DF7003E9B5D /* TimerListItemModelCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerListItemModelCell.xib; sourceTree = "<group>"; };
 		E74BE73E1CC553AA003E9B5D /* FMDBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FMDBManager.h; sourceTree = "<group>"; };
 		E74BE73F1CC553AA003E9B5D /* FMDBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FMDBManager.m; sourceTree = "<group>"; };
+		E75DD1661CD8590200483C5C /* TimerDetailItemOtherCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailItemOtherCell.h; sourceTree = "<group>"; };
+		E75DD1671CD8590200483C5C /* TimerDetailItemOtherCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailItemOtherCell.m; sourceTree = "<group>"; };
+		E75DD1691CD8590B00483C5C /* TimerDetailItemOtherCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerDetailItemOtherCell.xib; sourceTree = "<group>"; };
+		E75DD16B1CD8799A00483C5C /* TimerDetailItemStepCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerDetailItemStepCell.h; sourceTree = "<group>"; };
+		E75DD16C1CD8799A00483C5C /* TimerDetailItemStepCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerDetailItemStepCell.m; sourceTree = "<group>"; };
+		E75DD16E1CD879AB00483C5C /* TimerDetailItemStepCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TimerDetailItemStepCell.xib; sourceTree = "<group>"; };
+		E75DD1701CD8D55500483C5C /* UILabel+LabelHeightAndWidth.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UILabel+LabelHeightAndWidth.h"; sourceTree = "<group>"; };
+		E75DD1711CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UILabel+LabelHeightAndWidth.m"; sourceTree = "<group>"; };
+		E75DD1731CD8D5B500483C5C /* UIView+ChangeFrame.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+ChangeFrame.h"; sourceTree = "<group>"; };
+		E75DD1741CD8D5B500483C5C /* UIView+ChangeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChangeFrame.m"; sourceTree = "<group>"; };
+		E75DD1761CD8DB5A00483C5C /* AlterTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterTitleViewController.h; sourceTree = "<group>"; };
+		E75DD1771CD8DB5A00483C5C /* AlterTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterTitleViewController.m; sourceTree = "<group>"; };
+		E7F13AF61CCE419000B0312D /* TimerItemManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerItemManagerViewController.h; sourceTree = "<group>"; };
+		E7F13AF71CCE419000B0312D /* TimerItemManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerItemManagerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +209,7 @@
 		E74BE6EE1CC525B1003E9B5D /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				E71D3B1F1CD5EE9B00196E4E /* boli.mp3 */,
 				E74BE6EF1CC525B1003E9B5D /* main.m */,
 			);
 			name = "Supporting Files";
@@ -210,6 +238,10 @@
 			children = (
 				E74BE7271CC528F1003E9B5D /* TimerViewController.h */,
 				E74BE7281CC528F1003E9B5D /* TimerViewController.m */,
+				E7F13AF61CCE419000B0312D /* TimerItemManagerViewController.h */,
+				E7F13AF71CCE419000B0312D /* TimerItemManagerViewController.m */,
+				E75DD1761CD8DB5A00483C5C /* AlterTitleViewController.h */,
+				E75DD1771CD8DB5A00483C5C /* AlterTitleViewController.m */,
 			);
 			name = Controller;
 			path = Base.lproj/Controller;
@@ -224,6 +256,8 @@
 				E74BE7311CC5310D003E9B5D /* TimerDetailItemModel.m */,
 				E72C6DD81CC5DDDA00BAEB55 /* TimerListItemDB.h */,
 				E72C6DD91CC5DDDA00BAEB55 /* TimerListItemDB.m */,
+				E71D3B211CD5F1B200196E4E /* TimerDetailItemDB.h */,
+				E71D3B221CD5F1B200196E4E /* TimerDetailItemDB.m */,
 			);
 			name = Model;
 			path = Base.lproj/Model;
@@ -235,6 +269,12 @@
 				E74BE7381CC54DE4003E9B5D /* TimerListItemModelCell.h */,
 				E74BE7391CC54DE4003E9B5D /* TimerListItemModelCell.m */,
 				E74BE73B1CC54DF7003E9B5D /* TimerListItemModelCell.xib */,
+				E75DD1661CD8590200483C5C /* TimerDetailItemOtherCell.h */,
+				E75DD1671CD8590200483C5C /* TimerDetailItemOtherCell.m */,
+				E75DD1691CD8590B00483C5C /* TimerDetailItemOtherCell.xib */,
+				E75DD16B1CD8799A00483C5C /* TimerDetailItemStepCell.h */,
+				E75DD16C1CD8799A00483C5C /* TimerDetailItemStepCell.m */,
+				E75DD16E1CD879AB00483C5C /* TimerDetailItemStepCell.xib */,
 			);
 			name = View;
 			path = Base.lproj/View;
@@ -243,6 +283,10 @@
 		E74BE73D1CC55387003E9B5D /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				E75DD1701CD8D55500483C5C /* UILabel+LabelHeightAndWidth.h */,
+				E75DD1711CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m */,
+				E75DD1731CD8D5B500483C5C /* UIView+ChangeFrame.h */,
+				E75DD1741CD8D5B500483C5C /* UIView+ChangeFrame.m */,
 				E74BE73E1CC553AA003E9B5D /* FMDBManager.h */,
 				E74BE73F1CC553AA003E9B5D /* FMDBManager.m */,
 				E72C6D971CC5BA9B00BAEB55 /* PrefixHeader.pch */,
@@ -361,9 +405,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E75DD16A1CD8590B00483C5C /* TimerDetailItemOtherCell.xib in Resources */,
 				E74BE73C1CC54DF7003E9B5D /* TimerListItemModelCell.xib in Resources */,
 				E74BE6FE1CC525B1003E9B5D /* LaunchScreen.storyboard in Resources */,
+				E71D3B201CD5EE9B00196E4E /* boli.mp3 in Resources */,
 				E74BE6FB1CC525B1003E9B5D /* Assets.xcassets in Resources */,
+				E75DD16F1CD879AB00483C5C /* TimerDetailItemStepCell.xib in Resources */,
 				E74BE6F91CC525B1003E9B5D /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -438,17 +485,24 @@
 			buildActionMask = 2147483647;
 			files = (
 				E705F3581CC5F6E600181248 /* FactoryTableViewCell.m in Sources */,
+				E75DD1781CD8DB5A00483C5C /* AlterTitleViewController.m in Sources */,
+				E75DD1681CD8590200483C5C /* TimerDetailItemOtherCell.m in Sources */,
 				E74BE73A1CC54DE4003E9B5D /* TimerListItemModelCell.m in Sources */,
+				E75DD16D1CD8799A00483C5C /* TimerDetailItemStepCell.m in Sources */,
 				E74BE7361CC54DAD003E9B5D /* BaseTableViewCell.m in Sources */,
 				E74BE72C1CC52B09003E9B5D /* BaseModel.m in Sources */,
 				E74BE7261CC528D7003E9B5D /* BaseViewController.m in Sources */,
+				E71D3B231CD5F1B200196E4E /* TimerDetailItemDB.m in Sources */,
 				E74BE72F1CC52D4A003E9B5D /* TimerListItemModel.m in Sources */,
+				E7F13AF81CCE419000B0312D /* TimerItemManagerViewController.m in Sources */,
 				E72C6DDA1CC5DDDA00BAEB55 /* TimerListItemDB.m in Sources */,
 				E74BE7291CC528F1003E9B5D /* TimerViewController.m in Sources */,
+				E75DD1751CD8D5B500483C5C /* UIView+ChangeFrame.m in Sources */,
 				E74BE7321CC5310D003E9B5D /* TimerDetailItemModel.m in Sources */,
 				E74BE7401CC553AA003E9B5D /* FMDBManager.m in Sources */,
 				E74BE6F31CC525B1003E9B5D /* AppDelegate.m in Sources */,
 				E74BE6F01CC525B1003E9B5D /* main.m in Sources */,
+				E75DD1721CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

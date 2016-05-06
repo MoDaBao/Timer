@@ -99,11 +99,6 @@
     [self.view addSubview:self.imagePickerView];
 }
 
-//// 创建选择视图
-//- (void)createPickerView {
-////    self.imagePickerView = [UIPickerView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
-//}
-
 // 创建按钮
 - (void)createBtn {
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
@@ -128,23 +123,8 @@
     self.navigationItem.title = @"修改计时器";
     
     [self createView];// 创建视图
-//    [self createPickerView];// 创建选择视图
     [self createBtn];// 创建按钮
 }
-
-// 给颜色赋值
-//- (void)assignmentWithImageView:(UIImageView *)imageView color:(NSString *)color {
-//    if ([color isEqualToString:@"kPink"]) {
-//        imageView.backgroundColor = kPink;
-//    } else if ([color isEqualToString:@"kGray"]) {
-//        imageView.backgroundColor = kGray;
-//    } else if ([color isEqualToString:@"kGreen"]) {
-//        imageView.backgroundColor = kGreen;
-//    } else if ([color isEqualToString:@"kBlue"]) {
-//        imageView.backgroundColor = kBlue;
-//    }
-//    
-//}
 
 
 #pragma mark -----pickerView代理方法-----
@@ -169,11 +149,12 @@
 
 - (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
     UIView *returnView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenWidth * 0.5, 20)];
+//    returnView.backgroundColor = [UIColor orangeColor];
     CGFloat width = 25;
     CGFloat height = width;
     CGFloat margin = 10;
     CGFloat totalwidth = [UILabel getWidthWithTitle:@"跑步" font:[UIFont systemFontOfSize:14]] + margin + width;
-    CGFloat imageX = kScreenWidth * 0.5 - totalwidth * 0.5;
+    CGFloat imageX = kScreenWidth * 0.25 - totalwidth * 0.5;
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(imageX, returnView.height * 0.5 - height * 0.5, width, height)];
     imageView.layer.cornerRadius = width * 0.25;
     // 取出数据源

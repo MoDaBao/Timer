@@ -34,6 +34,8 @@
 		E75DD1721CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1711CD8D55500483C5C /* UILabel+LabelHeightAndWidth.m */; };
 		E75DD1751CD8D5B500483C5C /* UIView+ChangeFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1741CD8D5B500483C5C /* UIView+ChangeFrame.m */; };
 		E75DD1781CD8DB5A00483C5C /* AlterTitleViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E75DD1771CD8DB5A00483C5C /* AlterTitleViewController.m */; };
+		E7B742AB1CDB1F1100F24E98 /* ManagerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7B742AA1CDB1F1100F24E98 /* ManagerView.m */; };
+		E7B742AD1CDB1F1E00F24E98 /* ManagerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7B742AC1CDB1F1E00F24E98 /* ManagerView.xib */; };
 		E7E2629B1CD9E7EA00CBC7BC /* CustomPickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E2629A1CD9E7EA00CBC7BC /* CustomPickerView.m */; };
 		E7E262A31CD9FF7E00CBC7BC /* MOCustomDatePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E262A21CD9FF7E00CBC7BC /* MOCustomDatePickerView.m */; };
 		E7E262A61CDA137F00CBC7BC /* StepDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E262A51CDA137F00CBC7BC /* StepDetailViewController.m */; };
@@ -122,6 +124,9 @@
 		E75DD1741CD8D5B500483C5C /* UIView+ChangeFrame.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+ChangeFrame.m"; sourceTree = "<group>"; };
 		E75DD1761CD8DB5A00483C5C /* AlterTitleViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlterTitleViewController.h; sourceTree = "<group>"; };
 		E75DD1771CD8DB5A00483C5C /* AlterTitleViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlterTitleViewController.m; sourceTree = "<group>"; };
+		E7B742A91CDB1F1100F24E98 /* ManagerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ManagerView.h; sourceTree = "<group>"; };
+		E7B742AA1CDB1F1100F24E98 /* ManagerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ManagerView.m; sourceTree = "<group>"; };
+		E7B742AC1CDB1F1E00F24E98 /* ManagerView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ManagerView.xib; sourceTree = "<group>"; };
 		E7E262991CD9E7EA00CBC7BC /* CustomPickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomPickerView.h; sourceTree = "<group>"; };
 		E7E2629A1CD9E7EA00CBC7BC /* CustomPickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomPickerView.m; sourceTree = "<group>"; };
 		E7E262A11CD9FF7E00CBC7BC /* MOCustomDatePickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MOCustomDatePickerView.h; sourceTree = "<group>"; };
@@ -317,6 +322,9 @@
 				E7E262B81CDA39B600CBC7BC /* ColorItemCell.h */,
 				E7E262B91CDA39B600CBC7BC /* ColorItemCell.m */,
 				E7E262BB1CDA3AC900CBC7BC /* ColorItemCell.xib */,
+				E7B742A91CDB1F1100F24E98 /* ManagerView.h */,
+				E7B742AA1CDB1F1100F24E98 /* ManagerView.m */,
+				E7B742AC1CDB1F1E00F24E98 /* ManagerView.xib */,
 				E7E262AA1CDA236C00CBC7BC /* StartView.h */,
 				E7E262AB1CDA236C00CBC7BC /* StartView.m */,
 				E7E262AD1CDA239B00CBC7BC /* StartView.xib */,
@@ -464,6 +472,7 @@
 				E74BE6FB1CC525B1003E9B5D /* Assets.xcassets in Resources */,
 				E75DD16F1CD879AB00483C5C /* TimerDetailItemStepCell.xib in Resources */,
 				E74BE6F91CC525B1003E9B5D /* Main.storyboard in Resources */,
+				E7B742AD1CDB1F1E00F24E98 /* ManagerView.xib in Resources */,
 				E7E262AE1CDA239B00CBC7BC /* StartView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -556,6 +565,7 @@
 				E74BE7291CC528F1003E9B5D /* TimerViewController.m in Sources */,
 				E75DD1751CD8D5B500483C5C /* UIView+ChangeFrame.m in Sources */,
 				E74BE7321CC5310D003E9B5D /* TimerDetailItemModel.m in Sources */,
+				E7B742AB1CDB1F1100F24E98 /* ManagerView.m in Sources */,
 				E74BE7401CC553AA003E9B5D /* FMDBManager.m in Sources */,
 				E7E262BA1CDA39B600CBC7BC /* ColorItemCell.m in Sources */,
 				E74BE6F31CC525B1003E9B5D /* AppDelegate.m in Sources */,

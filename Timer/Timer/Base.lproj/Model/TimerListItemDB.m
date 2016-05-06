@@ -12,7 +12,7 @@
 
 - (instancetype)init {
     if (self = [super init]) {
-        _dataBase = [FMDBManager shareInstanceWithDBName:DATABASENAME].dataBase;
+        _dataBase = [FMDBManager shareInstanceWithDBName:TIMERDATABASENAME].dataBase;
     }
     return self;
 }

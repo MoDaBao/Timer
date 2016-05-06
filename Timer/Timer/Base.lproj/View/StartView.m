@@ -1,4 +1,3 @@
-//
 //  StartView.m
 //  Timer
 //
@@ -17,5 +16,8 @@
     // Drawing code
 }
 */
+- (IBAction)start:(id)sender {
+    self.start();
+}
 
 @end

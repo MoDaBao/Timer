@@ -13,6 +13,9 @@
 #import "CustomPickerView.h"
 #import "MOCustomDatePickerView.h"
 #import "StepDetailViewController.h"
+#import "ManagerView.h"
+#import "StartView.h"
+
 @interface TimerItemManagerViewController ()<UITableViewDataSource, UITableViewDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
@@ -23,6 +26,15 @@
 //@property (nonatomic, strong) TimerDetailItemModel *selectModel;// 数据库中某一项
 @property (nonatomic, strong) TimerDetailItemModel *oldModel;
 
+@property (nonatomic, strong) ManagerView *managerView;
+
+@property (nonatomic, strong) UIBarButtonItem *saveItem;
+
+@property (nonatomic, strong) UIBarButtonItem *managerItem;
+
+@property (nonatomic, assign) BOOL isManager;// 是否是管理按钮
+
+@property (nonatomic, strong) StartView *startView;
 
 
 @end
@@ -91,29 +103,35 @@
     [self.view addSubview:self.tableView];
 }
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    // Do any additional setup after loading the view.
-    // 返回按钮
+- (void)createButton {
     UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     backBtn.frame = CGRectMake(0, 0, 20, 20);
     [backBtn setBackgroundImage:[UIImage imageNamed:@"left"] forState:UIControlStateNormal];
     [backBtn addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
     
     // 保存按钮
+    UIButton *saveBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    saveBtn.frame = CGRectMake(0, 0, 40, 20);
+    [saveBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [saveBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    saveBtn.titleLabel.font = [UIFont systemFontOfSize:15];
+    [saveBtn addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    
+    // 管理按钮
     UIButton *managerBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     managerBtn.frame = CGRectMake(0, 0, 40, 20);
-    [managerBtn setTitle:@"保存" forState:UIControlStateNormal];
+    [managerBtn setTitle:@"管理" forState:UIControlStateNormal];
     [managerBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
     managerBtn.titleLabel.font = [UIFont systemFontOfSize:15];
-    [managerBtn addTarget:self action:@selector(save) forControlEvents:UIControlEventTouchUpInside];
+    [managerBtn addTarget:self action:@selector(manager) forControlEvents:UIControlEventTouchUpInside];
     
     // 返回baritem
     UIBarButtonItem *backItem = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
     self.navigationItem.leftBarButtonItem = backItem;
+    // 保存baritem
+    self.saveItem = [[UIBarButtonItem alloc] initWithCustomView:saveBtn];
     // 管理baritem
-    UIBarButtonItem *managerItem = [[UIBarButtonItem alloc] initWithCustomView:managerBtn];
-    self.navigationItem.rightBarButtonItem = managerItem;
+    self.managerItem = [[UIBarButtonItem alloc] initWithCustomView:managerBtn];
     
     UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 60, 30)];
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 5, 20, 20)];
@@ -125,20 +143,48 @@
     if (_isNew) {
         imageView.image = [UIImage imageNamed:self.orginModel.titleicon];
         label.text = self.orginModel.title;
-//        [self assignmentWithImageView:imageView color:self.orginModel.titlecolor];
         [ChangeColorManager changColorWithImageView:imageView color:self.orginModel.titlecolor];
+        self.navigationItem.rightBarButtonItem = self.saveItem;
+        self.isManager = NO;
     } else {
         imageView.image = [UIImage imageNamed:self.selectModel.titleicon];
         label.text = self.selectModel.title;
-//        [self assignmentWithImageView:imageView color:self.selectModel.titlecolor];
         [ChangeColorManager changColorWithImageView:imageView color:self.selectModel.titlecolor];
+        self.navigationItem.rightBarButtonItem = self.managerItem;
+        self.isManager = YES;
     }
     label.width = [UILabel getWidthWithTitle:label.text font:label.font];
     view.width = label.width + imageView.width;
     
     self.navigationItem.titleView = view;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    // Do any additional setup after loading the view.
     
+    [self createButton];
     [self createTableView];
+    
+    if (_isNew) {
+        self.managerView = [[[NSBundle mainBundle] loadNibNamed:@"ManagerView" owner:nil options:nil] lastObject];
+        self.managerView.frame = CGRectMake(0, kNavigationHeight, kScreenWidth, 40);
+        [self.view addSubview:self.managerView];
+        self.tableView.y = kNavigationHeight + self.managerView.height;
+        self.tableView.height = self.tableView.height - self.managerView.height;
+    }
+    
+    if (_isManager) {
+        [self createStartView];
+    }
+    
+}
+
+- (void)createStartView {
+    self.startView = [[[NSBundle mainBundle] loadNibNamed:@"StartView" owner:nil options:nil] lastObject];
+    CGFloat height = 80 / 667.0 * kScreenHeight;
+    self.startView.frame = CGRectMake(0, kScreenHeight - height, kScreenWidth, height);
+    [self.view addSubview:self.startView];
 }
 
 
@@ -155,16 +201,42 @@
         [db insertTimerDetailItemModel:self.orginModel];
         [self.navigationController popViewControllerAnimated:YES];
      } else {
-         if (self.oldModel) {
-             [db updateWithTitle:self.oldModel.title model:self.selectModel];
+//         if (self.oldModel) {
+        [db updateWithTitle:self.oldModel.title model:self.selectModel];
 //             NSLog(@"更新");
-         } else {
-             [db updateWithTitle:self.selectModel.title model:self.selectModel];
-         }
+//         } else {
+//             [db updateWithTitle:self.selectModel.title model:self.selectModel];
+         //         }
+         self.tableView.height += self.managerView.height;
+         [UIView animateWithDuration:.2 animations:^{
+             self.managerView.y = 0;
+             self.tableView.y -= self.managerView.height;
+         }];
+         [self.managerView removeFromSuperview];
+         self.managerView = nil;
+         self.navigationItem.rightBarButtonItem = self.managerItem;
+         self.isManager = YES;
+         [self.tableView reloadData];
          
      }
     
     
+}
+
+- (void)manager {
+    self.managerView = [[[NSBundle mainBundle] loadNibNamed:@"ManagerView" owner:nil options:nil] lastObject];
+    self.managerView.frame = CGRectMake(0, 0, kScreenWidth, 40);
+    [self.view addSubview:self.managerView];
+    self.tableView.height = self.tableView.height - self.managerView.height;
+    
+    [UIView animateWithDuration:.2 animations:^{
+        self.managerView.y = kNavigationHeight;
+        self.tableView.y += self.managerView.height;
+        
+    }];
+    self.navigationItem.rightBarButtonItem = self.saveItem;
+    self.isManager = NO;
+    [self.tableView reloadData];
 }
 
 #pragma mark -----表视图代理-----
@@ -215,6 +287,20 @@
             [self.navigationController pushViewController:stepVC animated:YES];
             
         };
+        if (_isManager) {
+            CGRect newframe = cell.time.frame;
+            newframe.origin.x = kScreenWidth - (cell.time.frame.size.width + 10);
+//            cell.time.x = kScreenWidth - (cell.time.width + 10);
+            cell.time.frame = newframe;
+            cell.alterBtn.hidden = YES;
+        } else {
+//            cell.time.x = kScreenWidth - (cell.time.width + 20 + cell.alterBtn.width);
+            CGRect newframe = cell.time.frame;
+            newframe.origin.x = kScreenWidth - (cell.time.frame.size.width + 20 + cell.alterBtn.frame.size.width);
+            cell.time.frame = newframe;
+            cell.alterBtn.hidden = NO;
+        }
+        
         return cell;
         
     } else {// 标题、倒计时、几轮
@@ -251,6 +337,9 @@
 //}
 
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (_isManager) {
+        return NO;
+    }
     if (indexPath.row > 1 && indexPath.row < self.itemArray.count + 2) {
         return YES;
     } else {
@@ -285,57 +374,60 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row == 0) {
-        AlterTitleViewController *alterTitleVC = [[AlterTitleViewController alloc] init];
-        if (_isNew) {
-            alterTitleVC.detailItemModel = self.orginModel;
-            alterTitleVC.passValue = ^(NSString *title) {
-                self.orginModel.title = title;
-                [self.tableView reloadData];
-            };
-        } else {
-            alterTitleVC.detailItemModel = self.selectModel;
-            alterTitleVC.passValue = ^(NSString *title) {
-                if (!self.oldModel) {
-                    self.oldModel = [[TimerDetailItemModel alloc] init];
+    if (!_isManager) {
+        if (indexPath.row == 0) {
+            AlterTitleViewController *alterTitleVC = [[AlterTitleViewController alloc] init];
+            if (_isNew) {
+                alterTitleVC.detailItemModel = self.orginModel;
+                alterTitleVC.passValue = ^(NSString *title) {
+                    self.orginModel.title = title;
+                    [self.tableView reloadData];
+                };
+            } else {
+                alterTitleVC.detailItemModel = self.selectModel;
+                alterTitleVC.passValue = ^(NSString *title) {
+                    if (!self.oldModel) {
+                        self.oldModel = [[TimerDetailItemModel alloc] init];
+                    }
+                    self.oldModel.title = self.selectModel.title;
+                    self.selectModel.title = title;
+                    [self.tableView reloadData];
+                };
+            }
+            [self.navigationController pushViewController:alterTitleVC animated:YES];
+            
+        } else if (indexPath.row == self.itemArray.count + 2) {
+            NSMutableArray *mArr = [NSMutableArray array];
+            for (int i = 1; i < 100; i ++) {
+                [mArr addObject:[NSString stringWithFormat:@"%d",i]];
+            }
+            CustomPickerView *customView = [CustomPickerView cretaCustomPickerViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) title:@"" dataArray:mArr];
+            customView.click = ^(NSString *item) {
+                NSLog(@"%@",item);
+                if (_isNew) {
+                    self.orginModel.loopcount = [NSNumber numberWithInt:[item intValue]];
+                    [self.tableView reloadData];
+                } else {
+                    self.selectModel.loopcount = [NSNumber numberWithInt:[item intValue]];
+                    [self.tableView reloadData];
                 }
-                self.oldModel.title = self.selectModel.title;
-                self.selectModel.title = title;
-                [self.tableView reloadData];
             };
+            [self.view addSubview:customView];
+        } else if (indexPath.row == 1) {
+            MOCustomDatePickerView *customView = [MOCustomDatePickerView cretaCustomPickerViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) title:nil dataArray:nil];
+            customView.click = ^ (NSString *item) {
+                if (_isNew) {
+                    self.orginModel.countdown = [NSNumber numberWithInt:[item intValue]];
+                    [self.tableView reloadData];
+                } else {
+                    self.selectModel.countdown = [NSNumber numberWithInt:[item intValue]];
+                    [self.tableView reloadData];
+                }
+            };
+            [self.view addSubview:customView];
         }
-        [self.navigationController pushViewController:alterTitleVC animated:YES];
-        
-    } else if (indexPath.row == self.itemArray.count + 2) {
-        NSMutableArray *mArr = [NSMutableArray array];
-        for (int i = 1; i < 100; i ++) {
-            [mArr addObject:[NSString stringWithFormat:@"%d",i]];
-        }
-        CustomPickerView *customView = [CustomPickerView cretaCustomPickerViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) title:@"" dataArray:mArr];
-        customView.click = ^(NSString *item) {
-            NSLog(@"%@",item);
-            if (_isNew) {
-                self.orginModel.loopcount = [NSNumber numberWithInt:[item intValue]];
-                [self.tableView reloadData];
-            } else {
-                self.selectModel.loopcount = [NSNumber numberWithInt:[item intValue]];
-                [self.tableView reloadData];
-            }
-        };
-        [self.view addSubview:customView];
-    } else if (indexPath.row == 1) {
-        MOCustomDatePickerView *customView = [MOCustomDatePickerView cretaCustomPickerViewWithFrame:CGRectMake(0, 0, kScreenWidth, kScreenHeight) title:nil dataArray:nil];
-        customView.click = ^ (NSString *item) {
-            if (_isNew) {
-                self.orginModel.countdown = [NSNumber numberWithInt:[item intValue]];
-                [self.tableView reloadData];
-            } else {
-                self.selectModel.countdown = [NSNumber numberWithInt:[item intValue]];
-                [self.tableView reloadData];
-            }
-        };
-        [self.view addSubview:customView];
     }
+    
 }
 
 - (void)didReceiveMemoryWarning {

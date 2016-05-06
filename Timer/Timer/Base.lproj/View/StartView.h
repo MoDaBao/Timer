@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+
 @interface StartView : UIView
+typedef void(^StartBlock)();
+
+@property (nonatomic, copy) StartBlock start;
 
 @end

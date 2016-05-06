@@ -64,6 +64,10 @@
         [_itemArray addObject:@{@"标题":array[1]}];
         [_itemArray addObject:@{@"颜色":array[0]}];
         [_itemArray addObject:@{@"时间":array[2]}];
+        NSString *time = array[2];
+        NSArray *timearr = [time componentsSeparatedByString:@":"];
+        self.minute = [timearr firstObject];
+        self.second = [timearr lastObject];
     }
     return _itemArray;
 }

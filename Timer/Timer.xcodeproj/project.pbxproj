@@ -47,6 +47,7 @@
 		E7E262B71CDA396500CBC7BC /* SelectColorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E262B61CDA396500CBC7BC /* SelectColorViewController.m */; };
 		E7E262BA1CDA39B600CBC7BC /* ColorItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E262B91CDA39B600CBC7BC /* ColorItemCell.m */; };
 		E7E262BC1CDA3AC900CBC7BC /* ColorItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E7E262BB1CDA3AC900CBC7BC /* ColorItemCell.xib */; };
+		E7E5AA5C1CDDDE25002E0769 /* TimeringViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7E5AA5B1CDDDE25002E0769 /* TimeringViewController.m */; };
 		E7F13AF81CCE419000B0312D /* TimerItemManagerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7F13AF71CCE419000B0312D /* TimerItemManagerViewController.m */; };
 		F478FDF0D28F018F70756234 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CAB1B7AB21438A059B572267 /* libPods.a */; };
 /* End PBXBuildFile section */
@@ -147,6 +148,8 @@
 		E7E262B81CDA39B600CBC7BC /* ColorItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorItemCell.h; sourceTree = "<group>"; };
 		E7E262B91CDA39B600CBC7BC /* ColorItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorItemCell.m; sourceTree = "<group>"; };
 		E7E262BB1CDA3AC900CBC7BC /* ColorItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ColorItemCell.xib; sourceTree = "<group>"; };
+		E7E5AA5A1CDDDE25002E0769 /* TimeringViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimeringViewController.h; sourceTree = "<group>"; };
+		E7E5AA5B1CDDDE25002E0769 /* TimeringViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimeringViewController.m; sourceTree = "<group>"; };
 		E7F13AF61CCE419000B0312D /* TimerItemManagerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerItemManagerViewController.h; sourceTree = "<group>"; };
 		E7F13AF71CCE419000B0312D /* TimerItemManagerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerItemManagerViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -284,6 +287,8 @@
 				E7E262B01CDA2AF500CBC7BC /* StepNameViewController.m */,
 				E7E262B51CDA396500CBC7BC /* SelectColorViewController.h */,
 				E7E262B61CDA396500CBC7BC /* SelectColorViewController.m */,
+				E7E5AA5A1CDDDE25002E0769 /* TimeringViewController.h */,
+				E7E5AA5B1CDDDE25002E0769 /* TimeringViewController.m */,
 			);
 			name = Controller;
 			path = Base.lproj/Controller;
@@ -559,6 +564,7 @@
 				E74BE72C1CC52B09003E9B5D /* BaseModel.m in Sources */,
 				E74BE7261CC528D7003E9B5D /* BaseViewController.m in Sources */,
 				E71D3B231CD5F1B200196E4E /* TimerDetailItemDB.m in Sources */,
+				E7E5AA5C1CDDDE25002E0769 /* TimeringViewController.m in Sources */,
 				E74BE72F1CC52D4A003E9B5D /* TimerListItemModel.m in Sources */,
 				E7F13AF81CCE419000B0312D /* TimerItemManagerViewController.m in Sources */,
 				E72C6DDA1CC5DDDA00BAEB55 /* TimerListItemDB.m in Sources */,
